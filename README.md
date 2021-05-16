@@ -2,6 +2,9 @@
 A simple [LDtk](https://ldtk.io/) loader for [LÖVE](https://love2d.org/). 
 
 It was tested with LDtk v0.9.3
+
+All layer types are supported.
+
 ## Installation
 Place ldtk.lua anywhere in the project and make sure you have json.lua in the same folder.
 
@@ -181,3 +184,6 @@ You can became a [Patreon](https://www.patreon.com/HamdyElzonqali) if you want :
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
+
+
+Have Fun!
