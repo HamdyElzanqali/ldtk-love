@@ -67,7 +67,7 @@ local cache = {
     }
 }
 
-local levels, tilesets = {}, {}
+local levels, levelsNames, tilesets = {}, {}, {}
 
 --this is used as a switch statement for lua. much faster than if-else.
 local flipX = {
@@ -189,6 +189,10 @@ function ldtk:load(file, level)
 
     for index, value in ipairs(self.data.levels) do
         levels[value.identifier] = index
+    end
+
+    for key, value in pairs(levels) do
+        levelsNames[value] = key
     end
 
     for index, value in ipairs(self.data.defs.tilesets) do
@@ -322,6 +326,23 @@ function ldtk.getIndex(name)
     return levels[name]
 end
 
+--get the name of a specific level
+function ldtk.getName(index) 
+    return levelsNames[index]
+end
+
+--gets the current level index
+function ldtk:getCurrent()
+    return self.current
+end
+
+--get the current level name
+function ldtk:getCurrentName()
+    return levelsNames[self:getCurrent()]
+end
+
+
+
 --remove the cahced tiles and quods. you may use it if you have multiple .ldtk files
 function ldtk.removeCache()
     cache = {
@@ -332,6 +353,7 @@ function ldtk.removeCache()
             
         }
     }
+    collectgarbage()
 end
 
 
