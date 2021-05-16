@@ -1,8 +1,11 @@
 # ldtk-love
-A simple [LDtk](https://ldtk.io/) loader for [LÖVE](https://love2d.org/).
+A simple [LDtk](https://ldtk.io/) loader for [LÖVE](https://love2d.org/). 
 
+It was tested with LDtk v0.9.3
 ## Installation
 Place ldtk.lua anywhere in the project and make sure you have json.lua in the same folder.
+
+add this to the top of main.lua
 ```lua
 local ldtk = require 'path/to/ldtk.lua'
 ```
@@ -18,6 +21,8 @@ Load the .ldtk file using
 ```lua
 ldtk:load('path/to/file.ldtk')
 ```
+
+check main.lua for a detailed example on how to use this library.
 
 ## API
 ### Callbacks
@@ -169,3 +174,5 @@ ldtk.getPath('../tilesets/tiles.png') --gets the the relative path to main.lua
 ```
 returns string
 
+## Support
+If you like what you see, you can help by sharing. Pull requests are welcome.
