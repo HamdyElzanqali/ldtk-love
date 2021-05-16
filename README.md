@@ -177,7 +177,7 @@ returns string
 ## Support
 If you like what you see, you can help by sharing. Pull requests are welcome.
 
-You can became a [Patreon](https://www.patreon.com/HamdyElzonqali) if you want like to :3
+You can became a [Patreon](https://www.patreon.com/HamdyElzonqali) if you want :3
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
