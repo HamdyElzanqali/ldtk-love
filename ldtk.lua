@@ -1,5 +1,5 @@
 -- A basic LDtk loader for LÖVE created by Hamdy Elzonqali
--- Last tested with LDtk 9.2
+-- Last tested with LDtk 0.9.3
 --
 -- ldtk.lua
 --
@@ -31,7 +31,7 @@
 -- Remember to put json.lua in the same directory
 
 
---loading json
+-- loading json
 -- Current folder trick
 local currentFolder = (...):gsub('%.[^%.]+$', '')
 

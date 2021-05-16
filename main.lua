@@ -6,6 +6,8 @@ local ldtk = require 'ldtk'
     and "Advanced --> discard pre-CSV..." in project settings to save space
     and increase loading speed.
 
+    You can add your tilesets images anywhere relative to main.lua
+
     You have to save the LDtk project to take effect.
     You don't have to relaunch the game to get edited levels if you use separate
     files. But, You will need to relaunch or LDtk:load(file) if you add new levels or
