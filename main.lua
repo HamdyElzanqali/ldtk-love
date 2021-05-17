@@ -149,6 +149,6 @@ function love.draw()
         objects[i]:draw() --drawing every object
     end
 
-    love.graphics.scale(1, 1) --reseting scale
-    love.graphics.print('Use left and right arrows to change \nthe level.', 10, 10)
+    love.graphics.scale(0.5, 0.5) --scaling for the UI
+    love.graphics.print('Use left and right arrows to change the level.\nWhite squares are entities.', 10, 10)
 end
