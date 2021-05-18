@@ -6,7 +6,7 @@ local ldtk = require 'ldtk'
     and "Advanced --> discard pre-CSV..." in project settings to save space
     and increase loading speed.
 
-    You can add your tilesets images anywhere relative to main.lua
+    You can add your tilesets' images anywhere relative to main.lua
 
     You have to save the LDtk project to take effect.
     You don't have to relaunch the game to get edited levels if you use separate
@@ -19,7 +19,7 @@ local ldtk = require 'ldtk'
     https://love2d.org/wiki/Quad
 ]]
 
-local objects = {} --all our objects is here
+local objects = {} --all objects are here
 
 
 --classes are used for the example
@@ -36,7 +36,8 @@ end
 
 function object:draw()
     if self.visible then
-        love.graphics.rectangle('fill', self.x, self.y, self.w, self.h) --drawing a rectangle to represent entity
+        --drawing a rectangle to represent the entity
+        love.graphics.rectangle('fill', self.x, self.y, self.w, self.h)
     end
 end
 --
@@ -62,7 +63,7 @@ function love.load()
         px is pivot x and py is pivot y
         props contains all custom fields defined in LDtk for that entity
         remember that colors are HEX not RGB. 
-        You can use ldtk ldtk.getColorHex(color) to an RGB table like {0.21, 0.57, 0.92}
+        You can use ldtk ldtk.getColorHex(color) to get an RGB table like {0.21, 0.57, 0.92}
     ]]
     function ldtk.entity(entity)
         local newObject = object(entity) --creating new object based on the class we defined before
@@ -72,7 +73,7 @@ function love.load()
     --[[
         This is called when a new layer object is created
         The given object has x, y, order, identifier, visible, color and a draw function
-        layer:draw()
+        layer:draw() --used to draw the layer
     ]]
     function ldtk.layer(layer) 
         table.insert(objects, layer) --adding layer to the table we use to draw 
@@ -101,7 +102,7 @@ function love.load()
         load(level.props.create)() --here we use a string defined in LDtk as a function
     end
 
-    --Loading the first.
+    --Loading the first level.
     ldtk:goTo(1)
 
     --[[
@@ -122,7 +123,8 @@ function love.load()
 end
 
 
-
+-- keyboard keys switch statement for lua
+-- this is much faster than if - elseif
 local keys = {
     right = function ()
         ldtk:next()
@@ -146,7 +148,7 @@ function love.draw()
    love.graphics.scale(2, 2) --scalling the screen for pixelart
    len = #objects 
     for i = 1, len, 1 do
-        objects[i]:draw() --drawing every object
+        objects[i]:draw() --drawing every object in order
     end
 
     love.graphics.scale(0.5, 0.5) --scaling for the UI
