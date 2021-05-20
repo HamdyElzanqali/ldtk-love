@@ -51,7 +51,7 @@ callbacks gives you the extracted data from LDtk project file.
 | visisble | whether the entity is visible or not | boolean |
 | px | the x pivot of the entity | integer |
 | py | the y pivot of the entity | integer |
-| order | the order of the entity layer. The higher is drawn last (on top). | integer |
+| order | the order of the entity layer. | integer |
 | props | a table containing all custom properties defined in LDtk | table |
 
 
@@ -64,7 +64,7 @@ callbacks gives you the extracted data from LDtk project file.
 | y | y position | integer |
 | identifier | the layer name | string |
 | visible | whether the layer is visible or not | boolean |
-| order | the order of the entity layer. The higher is drawn last (on top).
+| order | the order of the entity layer.|
 | color | the blend color of the color. default: {1, 1, 1} (white) | table |
 | draw | draws the current layer | function |
 
@@ -176,6 +176,20 @@ makes the path relative to main.lua instead of the .ldtk file
 ldtk.getPath('../tilesets/tiles.png') --gets the the relative path to main.lua
 ```
 returns string
+
+#### ldtk.setFlipped
+whether to flip the order or not. false by default and can be accessed like ldtk.flipped
+```lua
+ldtk.setFlipped(true) -- flips the order and the top layer will be created last
+```
+returns nothing
+
+#### ldtk.getFlipped
+gets whether the order is flipped or not. same as ldtk.flipped
+```lua
+ldtk.getFlipped() -- is the order flipped ?
+```
+returns boolean
 
 ## Support
 If you like what you see, you can help by sharing. Pull requests are welcome.
