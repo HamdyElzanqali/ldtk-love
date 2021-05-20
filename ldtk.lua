@@ -27,8 +27,6 @@
 
 
 
--- What is shown on top is created last and has a higher 'order' value
--- You can change this by ldtk.flipped = false
 -- Remember to put json.lua in the same directory
 
 
