@@ -28,6 +28,7 @@
 
 
 -- What is shown on top is created last and has a higher 'order' value
+-- You can change this by ldtk.flipped = false
 -- Remember to put json.lua in the same directory
 
 
@@ -54,7 +55,9 @@ end
 
 
 
-local ldtk, TileLayer = {}, {}
+local ldtk, TileLayer = {
+    flipped = false
+}, {}
 local newPath, newRelPath, pathLen, keys
 local _path
 
@@ -169,7 +172,7 @@ function ldtk.getColorHex(color)
 end
 
 --loads project settings
-function ldtk:load(file, level)
+function ldtk:load(file, level, flipped)
     self.data = json.decode(love.filesystem.read(file))
     self.layers = {}
     self.entities = {}
@@ -206,7 +209,7 @@ end
 
 
 
-local layers, layer, entity, props, levelProps, levelEntry
+local layers, layer, entity, props, levelProps, levelEntry, len
 --loading level by its index (int)
 function ldtk:goTo(index)
     if index > self.max then error('there are no level with that index.') end
@@ -294,9 +297,17 @@ function ldtk:goTo(index)
         end
     }
 
-    for i = #layers, 1, -1 do
-        types[layers[i].__type](layers[i], self.layersCount - i)
+    if self.flipped then
+        for i = #layers, 1, -1 do
+            types[layers[i].__type](layers[i], self.layersCount - i)
+        end    
+    else
+        len = #layers
+        for i = 1, len do
+            types[layers[i].__type](layers[i], self.layersCount - i)
+        end    
     end
+    
 
     self.onLevelCreated(levelEntry)
 end
@@ -341,7 +352,10 @@ function ldtk:getCurrentName()
     return levelsNames[self:getCurrent()]
 end
 
-
+--sets whether to invert the loop or not
+function ldtk:setFlipped(flipped)
+    self.flipped = flipped
+end
 
 --remove the cahced tiles and quods. you may use it if you have multiple .ldtk files
 function ldtk.removeCache()

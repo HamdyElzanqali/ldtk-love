@@ -53,6 +53,8 @@ function love.load()
 
     --loads a .ldtk file
     ldtk:load('ldtk/game.ldtk')
+    ldtk:setFlipped(true) --flips the loop
+                          --you may not need this if you have your own custom loop
 
     --[[
         This is called when an entity is created
