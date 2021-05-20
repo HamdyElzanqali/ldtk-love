@@ -26,7 +26,6 @@
 
 
 
-
 -- Remember to put json.lua in the same directory
 
 
@@ -353,6 +352,11 @@ end
 --sets whether to invert the loop or not
 function ldtk:setFlipped(flipped)
     self.flipped = flipped
+end
+
+--gets whether the loop is inverted or not
+function ldtk:getFlipped()
+    return self.flipped
 end
 
 --remove the cahced tiles and quods. you may use it if you have multiple .ldtk files
