@@ -28,7 +28,6 @@
 
 -- Remember to put json.lua in the same directory
 
-
 -- loading json
 -- Current folder trick
 local currentFolder = (...):gsub('%.[^%.]+$', '')
@@ -45,7 +44,7 @@ if not jsonLoaded then
 end
 
 -- Try to load relatively
-if not json then
+if not jsonLoaded then
     jsonLoaded, json = pcall(require, currentFolder .. ".json")
 end
 --
