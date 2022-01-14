@@ -226,6 +226,7 @@ function ldtk:goTo(index)
     end
 
 
+
     levelEntry = {
         bgColor = ldtk.getColorHex(self.data.levels[index].__bgColor),
         identifier = self.data.levels[index].identifier,
@@ -267,7 +268,7 @@ function ldtk:goTo(index)
 
         Tiles = function (currentLayer, order)
             if #currentLayer.gridTiles > 0 then
-                layer = {create = TileLayer.create, draw = TileLayer.draw, setup = TileLayer.setup}
+                layer = {create = TileLayer.create, draw = TileLayer.draw}
                 layer = setmetatable(layer, TileLayer)
                 layer:create(currentLayer)
                 layer.order = order
@@ -277,7 +278,7 @@ function ldtk:goTo(index)
 
         IntGrid = function (currentLayer, order)
             if #currentLayer.autoLayerTiles > 0 and currentLayer.__tilesetDefUid then
-                layer = {create = TileLayer.create, draw = TileLayer.draw, setup = TileLayer.setup}
+                layer = {create = TileLayer.create, draw = TileLayer.draw}
                     layer = setmetatable(layer, TileLayer)
                     layer:create(currentLayer, true)
                     layer.order = order
@@ -287,7 +288,7 @@ function ldtk:goTo(index)
 
         AutoLayer = function (currentLayer, order)
             if currentLayer.__tilesetDefUid and #currentLayer.autoLayerTiles > 0 then
-                layer = {create = TileLayer.create, draw = TileLayer.draw, setup = TileLayer.setup}
+                layer = {create = TileLayer.create, draw = TileLayer.draw}
                 layer = setmetatable(layer, TileLayer)
                 layer:create(currentLayer, true)
                 layer.order = order
@@ -417,7 +418,7 @@ function TileLayer:create(data, auto)
     if not cache.tilesets[data.__tilesetDefUid] then
         --loading tileset
         cache.tilesets[data.__tilesetDefUid] = love.graphics.newImage(self.path)
-        --create batch
+        --create spritebatch
         cache.batch[data.__tilesetDefUid] = love.graphics.newSpriteBatch(cache.tilesets[data.__tilesetDefUid])
 
         --creating quads for tileset
@@ -437,36 +438,29 @@ function TileLayer:create(data, auto)
     end
 
 
-    --Fill batch with quads
-    self:setup()
-
 
 end
 
 local len, oldColor = 0, {}
 
---Add quads to batch
-function TileLayer:setup()
-      if self.visible then
+--draws tiles
+function TileLayer:draw()
+    if self.visible then
         len = #self.tiles
-
-        for i = 1, len do
+        --Clear batch
+        cache.batch[self.tileset.uid]:clear()
+        --Get old color
+        oldColor[1], oldColor[2], oldColor[3], oldColor[4] = love.graphics.getColor()
+        -- Fill batch with quads
+         for i = 1, len do
             cache.batch[self.tileset.uid]:add(cache.quods[self.tileset.uid][self.tiles[i].t], 
                                 self.x + self.tiles[i].px[1] + self._offsetX[self.tiles[i].f], 
                                 self.y + self.tiles[i].px[2] + self._offsetY[self.tiles[i].f], 0, 
                                 flipX[self.tiles[i].f], flipY[self.tiles[i].f])
         end
-    end
-
-end
-
---draws batch
-function TileLayer:draw()
-    if self.visible then
-        len = #self.tiles
-        oldColor[1], oldColor[2], oldColor[3], oldColor[4] = love.graphics.getColor()
 
         love.graphics.setColor(self.color)
+        --Draw batch
         love.graphics.draw(cache.batch[self.tileset.uid])
         love.graphics.setColor(oldColor)
     end
