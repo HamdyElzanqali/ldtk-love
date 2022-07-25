@@ -46,6 +46,7 @@ callbacks gives you the extracted data from LDtk project file.
 | -- | -- | -- |
 | x | x position | integer |
 | y | y position | integer |
+| identifier | the entity name | string |
 | width | the entity width in pixels | integer |
 | height | the entity height in pixels | integer |
 | visisble | whether the entity is visible or not | boolean |
