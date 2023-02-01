@@ -3,26 +3,48 @@ A simple [LDtk](https://ldtk.io/) loader for [LÖVE](https://love2d.org/).
 
 It was tested with LDtk v0.9.3
 
-All layer types are supported.
 
-## Installation
-Place ldtk.lua anywhere in the project and make sure you have json.lua in the same folder.
+## Installation and Usage
+Place `ldtk.lua` anywhere in the project and make sure you have `json.lua` in the same folder.
+`json.lua` is needed because LDtk relies on json.
 
-add this to the top of main.lua
+You can put your tilesets and .ldtk files freely anywhere relative to `main.lua`.
+I recommend turning on "Minify JSON" and "Save levels to separate files" in project settings to save space and increase loading speed.
+
+Require ldtk at the top of `main.lua`
 ```lua
+-- Require the library
 local ldtk = require 'path/to/ldtk.lua'
 ```
-json.lua is needed because LDtk relies on json.
 
-You can add your tilesets anywhere relative to main.lua.
-
-I recommend checking "Minify JSON", "Save levels to separate files" and "Advanced --> discard pre-CSV..."
-in project settings to save space and increase loading speed.
-
-Load the .ldtk file using
-
+Load the `.ldtk` file using `ldtk:load` function.
 ```lua
+-- Load the .ldtk file
 ldtk:load('path/to/file.ldtk')
+
+-- Override the callbacks with your game logic.
+function ldtk.onEntity(entity)
+    -- A new entity is created.
+end
+function ldtk.onLayer(layer)
+    -- A new layer is created.
+end
+function ldtk.onLevelLoaded(level)
+    -- Current level is about to be changed.
+end
+function ldtk.onLevelCreated(level)
+    -- Current level has changed.
+end
+
+-- Flip the loading order if needed.
+ldtk:setFlipped(true) --false by default
+
+-- Load a level
+ldtk:goTo(2)        --loads the second level
+ldtk:level('cat')   --loads the level named cat
+ldtk:next()         --loads the next level (or the first if we are in the last)
+ldtk:previous()     --loads the previous level (or the last if we are in the first)
+ldtk:reload()       --reloads the current level
 ```
 
 check main.lua for a detailed example on how to use this library.
@@ -30,25 +52,25 @@ check main.lua for a detailed example on how to use this library.
 ## API
 ### Callbacks
 
-callbacks gives you the extracted data from LDtk project file.
+callbacks gives you the extracted data from LDtk project file in order.
 
-| name | description | input |
+| name | description | arguments |
 | -- | -- | -- |
-| entity | called when a new entity is created | entity object |
-| layer | called when a new layer object is created | layer object |
-| onLevelLoad | called just before any other callback when a new level is loaded | levelData object |
+| onEntity | called when a new entity is created | entity object |
+| onLayer | called when a new layer object is created | layer object |
+| onLevelLoaded | called just before any other callback when a new level is about to be created | levelData object |
 | onLevelCreated | called just after all other callbacks when a new level is created | levelData object |
 
 ### objects
-`entity`
+#`entity`
 
 | properity | description | type |
 | -- | -- | -- |
 | x | x position | integer |
 | y | y position | integer |
-| identifier | the entity name | string |
-| width | the entity width in pixels | integer |
-| height | the entity height in pixels | integer |
+| id | the entity name | string |
+| width | the width of the entity in pixels | integer |
+| height | the height of the entity in pixels | integer |
 | visisble | whether the entity is visible or not | boolean |
 | px | the x pivot of the entity | integer |
 | py | the y pivot of the entity | integer |
@@ -57,26 +79,26 @@ callbacks gives you the extracted data from LDtk project file.
 
 
 
-`layer`
+#`layer`
 
 | properity | description | type |
 | -- | -- | -- |
 | x | x position | integer |
 | y | y position | integer |
-| identifier | the layer name | string |
+| id | the layer name | string |
 | visible | whether the layer is visible or not | boolean |
-| order | the order of the entity layer.|
-| color | the blend color of the color. default: {1, 1, 1} (white) | table |
+| order | the order of the entity layer.| integer |
+| color | The color of the layer. usually used for opacity.  default: {1, 1, 1, 1} (white) | table |
 | draw | draws the current layer | function |
 
 
 
-`levelData`
+#`levelData`
 
 | properity | description | type |
 | -- | -- | -- |
-| bgColor | the background color. {r, g, b} like {0.47, 0.14, 0.83} | table |
-| identifier | the name of the level | string |
+| backgroundColor | the background color. {r, g, b} like {0.47, 0.14, 0.83} | table |
+| id | the name of the level | string |
 | worldX | the level x in the world | integer |
 | worldY | the level y in the world | integer |
 | width | the width of the level | integer |
@@ -193,9 +215,8 @@ ldtk.getFlipped() -- is the order flipped ?
 returns boolean
 
 ## Support
-If you like what you see, you can help by sharing. Pull requests are welcome.
-
-You can became a [Patreon](https://www.patreon.com/HamdyElzonqali) if you want :3
+Contributions are welcome.
+I also have a [Patreon](https://www.patreon.com/HamdyElzonqali) page.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
