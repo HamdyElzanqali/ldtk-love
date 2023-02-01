@@ -165,7 +165,8 @@ function love.load()
         end
     end
 
-    --Loading the first level.
+    --Note: callbacks must be set before loading any level.
+    --Loading the first level
     ldtk:goTo(1)
 
     --[[
