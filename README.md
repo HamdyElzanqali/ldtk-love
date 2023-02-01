@@ -61,9 +61,9 @@ callbacks gives you the extracted data from LDtk project file in order.
 | onLevelCreated | called just after all other callbacks when a new level is created | levelData object |
 
 ### objects
---entity
 
-| properity | description | type |
+| entity |  |  |
+| property | description | type |
 | -- | -- | -- |
 | x | x position | integer |
 | y | y position | integer |
@@ -77,9 +77,8 @@ callbacks gives you the extracted data from LDtk project file in order.
 | props | a table containing all custom properties defined in LDtk | table |
 
 
---layer
-
-| properity | description | type |
+| layer |  |  |
+| property | description | type |
 | -- | -- | -- |
 | x | x position | integer |
 | y | y position | integer |
@@ -90,9 +89,8 @@ callbacks gives you the extracted data from LDtk project file in order.
 | draw | draws the current layer | function |
 
 
---levelData
-
-| properity | description | type |
+| levelData |  |  |
+| property | description | type |
 | -- | -- | -- |
 | backgroundColor | the background color. {r, g, b} like {0.47, 0.14, 0.83} | table |
 | id | the name of the level | string |
