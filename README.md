@@ -11,14 +11,10 @@ Place `ldtk.lua` anywhere in the project and make sure you have `json.lua` in th
 You can put your tilesets and .ldtk files freely anywhere relative to `main.lua`.<br />
 I recommend turning on "Minify JSON" and "Save levels to separate files" in project settings to save space and increase loading speed.<br />
 
-Require ldtk at the top of `main.lua`
 ```lua
 -- Require the library
 local ldtk = require 'path/to/ldtk.lua'
-```
 
-Load the `.ldtk` file using `ldtk:load` function.
-```lua
 -- Load the .ldtk file
 ldtk:load('path/to/file.ldtk')
 
