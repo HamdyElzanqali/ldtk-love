@@ -62,9 +62,10 @@ callbacks gives you the extracted data from LDtk project file in order.
 
 ### objects
 
-| entity |  |  |
+
 | property | description | type |
 | -- | -- | -- |
+| entity |  |  |
 | x | x position | integer |
 | y | y position | integer |
 | id | the entity name | string |
@@ -77,9 +78,10 @@ callbacks gives you the extracted data from LDtk project file in order.
 | props | a table containing all custom properties defined in LDtk | table |
 
 
-| layer |  |  |
+
 | property | description | type |
 | -- | -- | -- |
+| layer |  |  |
 | x | x position | integer |
 | y | y position | integer |
 | id | the layer name | string |
@@ -89,9 +91,10 @@ callbacks gives you the extracted data from LDtk project file in order.
 | draw | draws the current layer | function |
 
 
-| levelData |  |  |
+
 | property | description | type |
 | -- | -- | -- |
+| levelData |  |  |
 | backgroundColor | the background color. {r, g, b} like {0.47, 0.14, 0.83} | table |
 | id | the name of the level | string |
 | worldX | the level x in the world | integer |
