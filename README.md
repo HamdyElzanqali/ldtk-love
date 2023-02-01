@@ -103,7 +103,7 @@ returns nothing
 #### ldtk:level
 loads a level by its id (name)
 ```lua
-ldtk:load('menu') --loads the level named menu
+ldtk:level('menu') --loads the level named menu
 ```
 returns nothing
 
