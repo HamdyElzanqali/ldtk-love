@@ -5,11 +5,11 @@ It was tested with LDtk v0.9.3
 
 
 ## Installation and Usage
-Place `ldtk.lua` anywhere in the project and make sure you have `json.lua` in the same folder.
-`json.lua` is needed because LDtk relies on json.
+Place `ldtk.lua` anywhere in the project and make sure you have `json.lua` in the same folder.<br />
+`json.lua` is needed because LDtk relies on json.<br />
 
-You can put your tilesets and .ldtk files freely anywhere relative to `main.lua`.
-I recommend turning on "Minify JSON" and "Save levels to separate files" in project settings to save space and increase loading speed.
+You can put your tilesets and .ldtk files freely anywhere relative to `main.lua`.<br />
+I recommend turning on "Minify JSON" and "Save levels to separate files" in project settings to save space and increase loading speed.<br />
 
 Require ldtk at the top of `main.lua`
 ```lua
@@ -62,7 +62,8 @@ callbacks gives you the extracted data from LDtk project file in order.
 | onLevelCreated | called just after all other callbacks when a new level is created | levelData object |
 
 ### objects
-#`entity`
+<br />
+`entity`
 
 | properity | description | type |
 | -- | -- | -- |
@@ -215,11 +216,10 @@ ldtk.getFlipped() -- is the order flipped ?
 returns boolean
 
 ## Support
-Contributions are welcome.
+Contributions are welcome.<br />
 I also have a [Patreon](https://www.patreon.com/HamdyElzonqali) page.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
-
 
 Have Fun!
