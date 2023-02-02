@@ -25,6 +25,11 @@ end
 
 function ldtk.onLayer(layer)
     -- A new layer is created.
+    --[[ 
+        The "layer" object has a draw function to draw the whole layer.
+        Used like:
+            layer:draw()
+    ]]
 end
 
 function ldtk.onLevelLoaded(level)
@@ -46,7 +51,7 @@ ldtk:previous()     --loads the previous level (or the last if we are in the fir
 ldtk:reload()       --reloads the current level
 ```
 
-check main.lua for a detailed example on how to use this library.
+Check `main.lua` for a detailed example on how to use this library.
 
 ## API
 ### Callbacks
