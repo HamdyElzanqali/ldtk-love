@@ -217,10 +217,6 @@ ldtk.getFlipped() -- is the order flipped ?
 ```
 returns boolean
 
-## Support
-Contributions are welcome.<br />
-I also have a [Patreon](https://www.patreon.com/HamdyElzonqali) page.
-
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 
