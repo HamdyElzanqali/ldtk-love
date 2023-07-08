@@ -277,7 +277,7 @@ end
 
 
 local types = {
-    Entities = function (currentLayer, order, level)
+    Entities = function (currentLayer, order)
         for _, value in ipairs(currentLayer.entityInstances) do
             local props = {}
 
@@ -296,34 +296,34 @@ local types = {
                 order = order,
                 visible = currentLayer.visible,
                 props = props
-            }, level)
+            })
         end
     end,
 
-    Tiles = function (currentLayer, order, level)
+    Tiles = function (currentLayer, order)
         if not is_empty(currentLayer.gridTiles) then
             local layer = {draw = draw_layer_object}
             create_layer_object(layer, currentLayer, false)
             layer.order = order
-            ldtk.onLayer(layer, level)
+            ldtk.onLayer(layer)
         end
     end,
 
-    IntGrid = function (currentLayer, order, level)
+    IntGrid = function (currentLayer, order)
         if not is_empty(currentLayer.autoLayerTiles) and currentLayer.__tilesetDefUid then
             local layer = {draw = draw_layer_object}
             create_layer_object(layer, currentLayer, true)
             layer.order = order
-            ldtk.onLayer(layer, level)
+            ldtk.onLayer(layer)
         end
     end,
 
-    AutoLayer = function (currentLayer, order, level)
+    AutoLayer = function (currentLayer, order)
         if not is_empty(currentLayer.autoLayerTiles) and currentLayer.__tilesetDefUid then
             local layer = {draw = draw_layer_object}
             create_layer_object(layer, currentLayer, true)
             layer.order = order
-            ldtk.onLayer(layer, level)
+            ldtk.onLayer(layer)
         end
     end
 }
@@ -359,7 +359,6 @@ function ldtk:goTo(index)
         worldY = self.data.levels[index].worldY,
         width = self.data.levels[index].pxWid,
         height = self.data.levels[index].pxHei,
-        neighbours = self.data.levels[index].__neighbours,
         index = index,
         props = levelProps
     }
@@ -474,7 +473,7 @@ end
     Remember that colors are saved in HEX format and not RGB. 
     You can use ldtk ldtk.hex2rgb(color) to get an RGB table like {0.21, 0.57, 0.92}
 ]]
-function ldtk.onEntity(entity, level)
+function ldtk.onEntity(entity)
     
 end
 
@@ -493,7 +492,7 @@ end
         draw        = (function) -- used to draw the layer
     }
 ]]
-function ldtk.onLayer(layer, level)
+function ldtk.onLayer(layer)
     
 end
 
