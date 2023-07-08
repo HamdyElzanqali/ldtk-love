@@ -106,6 +106,7 @@ callbacks gives you the extracted data from LDtk project file in order.
 | worldY | the level y in the world | integer |
 | width | the width of the level | integer |
 | height | the height of the level | integer |
+| neighbours | a table containing all nearby levels (ie. levels that touch the current one)
 | props | a table containing all custom properties defined in LDtk | table |
 
 
