@@ -48,16 +48,6 @@ if not jsonLoaded then
     jsonLoaded, json = pcall(require, currentFolder .. ".json")
 end
 
-
-local ldtk = {
-    levels = {},
-    levelsNames = {},
-    tilesets = {},
-    currentLevelIndex = nil,
-    currentLevelName  = '',
-    flipped = false
-}
-
 local cache = {
     tilesets = {
 
@@ -68,6 +58,16 @@ local cache = {
     batch = {
 
     }
+}
+
+local ldtk = {
+    levels = {},
+    levelsNames = {},
+    tilesets = {},
+    currentLevelIndex = nil,
+    currentLevelName  = '',
+    flipped = false,
+    cache = cache
 }
 
 local _path
@@ -124,8 +124,13 @@ local function create_layer_object(self, data, auto)
     self.visible = data.visible
     self.color = {1, 1, 1, data.__opacity}
 
+    self.width = data.__cWid
+    self.height = data.__cHei
+    self.gridSize = data.__gridSize
+
     --getting tileset information
     self.tileset = ldtk.tilesets[data.__tilesetDefUid]
+    self.tilesetID = data.__tilesetDefUid
 
     --creating new tileset if not created yet
     if not cache.tilesets[data.__tilesetDefUid] then
@@ -184,8 +189,6 @@ local function draw_layer_object(self)
         love.graphics.setColor(oldColor)
     end
 end
-
-
 
 ----------- HELPER FUNCTIONS ------------
 --LDtk uses hex colors while LÖVE uses RGB (on a scale of 0 to 1)
