@@ -26,11 +26,11 @@ local class = require 'classic'
 --object class 
 local object = class:extend()
 
-function object:new(entitiy)
+function object:new(entity)
     -- setting up the object using the entity data
-    self.x, self.y = entitiy.x, entitiy.y
-    self.w, self.h = entitiy.width, entitiy.height
-    self.visible = entitiy.visible
+    self.x, self.y = entity.x, entity.y
+    self.w, self.h = entity.width, entity.height
+    self.visible = entity.visible
 end
 
 function object:draw()
