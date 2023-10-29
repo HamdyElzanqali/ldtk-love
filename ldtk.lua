@@ -290,6 +290,7 @@ local types = {
 
             ldtk.onEntity({
                 id = value.__identifier,
+                iid = value.iid,
                 x = value.px[1],
                 y = value.px[2],
                 width = value.width,
