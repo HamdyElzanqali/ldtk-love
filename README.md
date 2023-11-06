@@ -76,12 +76,11 @@ callbacks gives you the extracted data from LDtk project file in order.
 | id | the entity name | string |
 | width | the width of the entity in pixels | integer |
 | height | the height of the entity in pixels | integer |
-| visisble | whether the entity is visible or not | boolean |
+| visible | whether the entity is visible or not | boolean |
 | px | the x pivot of the entity | integer |
 | py | the y pivot of the entity | integer |
 | order | the order of the entity layer. | integer |
 | props | a table containing all custom properties defined in LDtk | table |
-
 
 
 | property | description | type |
@@ -89,6 +88,10 @@ callbacks gives you the extracted data from LDtk project file in order.
 | layer |  |  |
 | x | x position | integer |
 | y | y position | integer |
+| width | width in tiles | integer |
+| height | height in tiles | integer |
+| gridSize | size in pixels of each tile | integer |
+| tiles | array of [tile instances](https://ldtk.io/json/#ldtk-Tile) | table |
 | id | the layer name | string |
 | visible | whether the layer is visible or not | boolean |
 | order | the order of the entity layer.| integer |
