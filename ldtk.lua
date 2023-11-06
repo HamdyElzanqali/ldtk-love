@@ -110,8 +110,10 @@ local function create_layer_object(self, data, auto)
     --getting tiles information
     if auto then
         self.tiles = data.autoLayerTiles
+        self.intGrid = data.intGridCsv
     else 
         self.tiles = data.gridTiles
+        self.intGrid = nil
     end
 
     self._tilesLen = #self.tiles

@@ -92,6 +92,7 @@ callbacks gives you the extracted data from LDtk project file in order.
 | height | height in tiles | integer |
 | gridSize | size in pixels of each tile | integer |
 | tiles | array of [tile instances](https://ldtk.io/json/#ldtk-Tile) | table |
+| intGrid | integer array of grid values. nil if layer is not an IntGrid. | table \| nil |
 | id | the layer name | string |
 | visible | whether the layer is visible or not | boolean |
 | order | the order of the entity layer.| integer |
